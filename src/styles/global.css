@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-800 dark:text-white h-full min-h-screen antialiased;
+  }
+}
+
+@layer components {
+  .btn-icon > svg {
+    @apply w-5 h-5;
+  }
+}

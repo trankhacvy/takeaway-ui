@@ -1,5 +1,3 @@
-"use client"
-
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import * as React from "react"
 import { tv, type VariantProps } from "tailwind-variants"
@@ -9,7 +7,7 @@ const avatarStyles = tv({
   base: "relative flex shrink-0 overflow-hidden",
   variants: {
     variant: {
-      square: "",
+      square: "rounded-none",
       rounded: "rounded-lg",
       circle: "rounded-full",
     },

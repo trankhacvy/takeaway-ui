@@ -21,7 +21,6 @@ export const buttonVariants = cva(
         ],
         outline: [
           "text-primary-400 border border-primary-400",
-          // "hover:bg-primary-50",
           "focus:ring-primary-100",
           "disabled:text-primary-300 disabled:border-primary-200",
         ],

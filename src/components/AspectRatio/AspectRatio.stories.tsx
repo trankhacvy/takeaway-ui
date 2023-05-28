@@ -4,16 +4,31 @@ import { AspectRatio } from "./"
 const meta: Meta<typeof AspectRatio> = {
   title: "components/AspectRatio",
   component: AspectRatio,
-  args: {},
-  argTypes: {},
+  tags: ["autodocs"],
+  args: {
+    ratio: 1,
+  },
+  argTypes: {
+    ratio: {
+      control: {
+        type: "select",
+        labels: {
+          "1": "1/1",
+          [`${4 / 3}`]: "4/3",
+          [`${16 / 9}`]: "16/9",
+        },
+      },
+      options: [1, 4 / 3, 16 / 9],
+    },
+  },
 }
 
 type Story = StoryObj<typeof AspectRatio>
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div className="max-w-lg">
-      <AspectRatio ratio={1}>
+      <AspectRatio {...args}>
         <img
           className="h-full w-full object-cover"
           src="https://images.unsplash.com/photo-1535025183041-0991a977e25b?w=300&dpr=2&q=80"

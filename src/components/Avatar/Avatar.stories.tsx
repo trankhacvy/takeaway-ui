@@ -1,75 +1,35 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
-import { Avatar, AvatarFallback, AvatarImage, AvatarProps } from "./"
+import type { Meta, StoryObj } from "@storybook/react"
+import { Avatar, AvatarImage, AvatarFallback } from "./"
 
-export default {
+const meta: Meta<typeof Avatar> = {
   title: "components/Avatar",
   component: Avatar,
-} as ComponentMeta<typeof Avatar>
-
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
-
-const Sizes: AvatarProps["size"][] = ["xs", "sm", "md", "lg", "xl", "2xl"]
-
-export const Default = Template.bind({})
-
-Default.args = {}
-
-Default.decorators = [
-  () => {
-    return (
-      <div className="flex gap-4">
-        {Sizes.map((size) => (
-          <Avatar size={size} key={size}>
-            <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-            <AvatarFallback>GM</AvatarFallback>
-          </Avatar>
-        ))}
-      </div>
-    )
+  tags: ["autodocs"],
+  args: {
+    size: "md",
+    variant: "rounded",
   },
-]
-
-export const Fallback = Template.bind({})
-
-Fallback.args = {}
-
-Fallback.decorators = [
-  () => {
-    return (
-      <div className="flex gap-4">
-        {Sizes.map((size) => (
-          <Avatar size={size} key={size}>
-            <AvatarImage src="" alt="avatar" />
-            <AvatarFallback>GM</AvatarFallback>
-          </Avatar>
-        ))}
-      </div>
-    )
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
+    },
+    variant: {
+      control: "select",
+      options: ["rounded", "square", "circle"],
+    },
   },
-]
+}
 
-export const Variants = Template.bind({})
+type Story = StoryObj<typeof Avatar>
 
-Variants.args = {}
+export const Default: Story = {
+  render: (props) => (
+    <Avatar {...props}>
+      <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
+      <AvatarFallback>GM</AvatarFallback>
+    </Avatar>
+  ),
+}
 
-Variants.decorators = [
-  () => {
-    return (
-      <div className="flex gap-4">
-        <Avatar variant="rounded">
-          <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-          <AvatarFallback>GM</AvatarFallback>
-        </Avatar>
-        <Avatar variant="square">
-          <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-          <AvatarFallback>GM</AvatarFallback>
-        </Avatar>
-        <Avatar variant="circle">
-          <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-          <AvatarFallback>GM</AvatarFallback>
-        </Avatar>
-      </div>
-    )
-  },
-]
+export default meta

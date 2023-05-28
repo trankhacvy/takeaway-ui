@@ -1,101 +1,34 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { ArrowRightIcon, PlusIcon } from "lucide-react"
-import React from "react"
+import type { Meta, StoryObj } from "@storybook/react"
+import { Button, ButtonProps } from "./"
+import { PlusIcon } from "lucide-react"
 
-import { Button, ButtonProps } from "./Button"
-
-export default {
-  title: "Components/Button",
+const meta: Meta<ButtonProps> = {
+  title: "components/Button",
   component: Button,
+  tags: ["autodocs"],
+  args: {
+    size: "md",
+    variant: "solid",
+    fullWidth: false,
+    disabled: false,
+    children: "Submit",
+  },
   argTypes: {
-    backgroundColor: { control: "color" },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    variant: {
+      control: "select",
+      options: ["solid", "outline", "link"],
+    },
   },
-} as ComponentMeta<typeof Button>
-
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
-
-export const Variant = Template.bind({})
-Variant.args = {
-  children: "Button",
 }
 
-Variant.decorators = [
-  () => {
-    return (
-      <div className="space-x-4">
-        <Button {...(Variant.args as ButtonProps)} variant="solid" />
-        <Button {...(Variant.args as ButtonProps)} variant="outline" />
-        <Button {...(Variant.args as ButtonProps)} variant="link" />
-      </div>
-    )
-  },
-]
+type Story = StoryObj<typeof Button>
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-  children: "Button",
-  disabled: true,
-}
-Disabled.decorators = [
-  () => {
-    return (
-      <div className="space-x-4">
-        <Button {...(Disabled.args as ButtonProps)} variant="solid" />
-        <Button {...(Disabled.args as ButtonProps)} variant="outline" />
-        <Button {...(Disabled.args as ButtonProps)} variant="link" />
-      </div>
-    )
-  },
-]
-
-export const Size = Template.bind({})
-Size.args = {
-  children: "Button",
+export const Default: Story = {
+  render: (props) => <Button {...props} />,
 }
 
-Size.decorators = [
-  () => {
-    return (
-      <div className="space-x-4">
-        <Button {...(Size.args as ButtonProps)} size="sm" />
-        <Button {...(Size.args as ButtonProps)} size="md" />
-        <Button {...(Size.args as ButtonProps)} size="lg" />
-      </div>
-    )
-  },
-]
-
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  children: "Button",
-  startDecorator: <PlusIcon className="h-5 w-5" />,
-  endDecorator: <ArrowRightIcon className="h-5 w-5" />,
-}
-WithIcon.decorators = [
-  () => {
-    return (
-      <div className="space-x-4">
-        <Button {...(WithIcon.args as ButtonProps)} variant="solid" />
-        <Button {...(WithIcon.args as ButtonProps)} variant="outline" />
-        <Button {...(WithIcon.args as ButtonProps)} variant="link" />
-      </div>
-    )
-  },
-]
-
-export const Loading = Template.bind({})
-Loading.args = {
-  children: "Button",
-  loading: true,
-}
-Loading.decorators = [
-  () => {
-    return (
-      <div className="space-x-4">
-        <Button {...(Loading.args as ButtonProps)} variant="solid" />
-        <Button {...(Loading.args as ButtonProps)} variant="outline" />
-        <Button {...(Loading.args as ButtonProps)} variant="link" />
-      </div>
-    )
-  },
-]
+export default meta

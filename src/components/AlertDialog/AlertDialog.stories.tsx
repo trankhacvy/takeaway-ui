@@ -12,34 +12,44 @@ import {
   AlertDialogTrigger,
 } from "."
 
-const meta: Meta<typeof AlertDialog> = {
+const meta: Meta<typeof AlertDialog & typeof AlertDialogContent> = {
   title: "components/AlertDialog",
   component: AlertDialog,
-  args: {},
-  argTypes: {},
+  tags: ["autodocs"],
+  args: {
+    maxWidth: "md",
+    fullWidth: true,
+  },
+  argTypes: {
+    maxWidth: {
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
+    },
+  },
 }
 
-type Story = StoryObj<typeof AlertDialog>
+type Story = StoryObj<typeof AlertDialog & typeof AlertDialogContent>
 
 export const Default: Story = {
-  render: () => (
+  render: ({ maxWidth, fullWidth, ...rest }) => (
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Open</Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent maxWidth={maxWidth} fullWidth={fullWidth}>
         <AlertDialogHeader>
-          <AlertDialogTitle>Blog post published</AlertDialogTitle>
+          <AlertDialogTitle>Use Google's location service?</AlertDialogTitle>
           <AlertDialogDescription>
-            This blog post has been published. Team members will be able to edit this post and republish changes.
+            Let Google help apps determine location. This means sending anonymous location data to Google, even when no
+            apps are running.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">Disagree</Button>
           </AlertDialogCancel>
           <AlertDialogAction asChild>
-            <Button>Confirm</Button>
+            <Button>Agree</Button>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

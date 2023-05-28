@@ -4,15 +4,25 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 const meta: Meta<typeof Accordion> = {
   title: "components/Accordion",
   component: Accordion,
-  args: {},
-  argTypes: {},
+  tags: ["autodocs"],
+  args: {
+    type: "single",
+    collapsible: true,
+    className: "max-w-md",
+  },
+  argTypes: {
+    type: {
+      control: "select",
+      options: ["single", "multiple"],
+    },
+  },
 }
 
 type Story = StoryObj<typeof Accordion>
 
 export const Default: Story = {
-  render: () => (
-    <Accordion type="single" collapsible className="w-[450px]">
+  render: (props) => (
+    <Accordion {...props}>
       <AccordionItem value="item-1">
         <AccordionTrigger>Is there a free trial available?</AccordionTrigger>
         <AccordionContent>

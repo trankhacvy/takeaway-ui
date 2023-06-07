@@ -1,18 +1,24 @@
 # Takeaway UI 🥤🥤
 
-A collection of React components that I use to build my side project, inspired by [shadcn/ui](https://github.com/shadcn/ui).
+A collection of React components that I use to build my side projects, inspired by [shadcn/ui](https://github.com/shadcn/ui).
 
 > This is **NOT** a component library, so you don't need to install it from npm. Just pick the component you need, copy and paste the code into your project, and customize if needed.
 
+<img src="assets/sreenshot.png" width="100%" />
+
+[Demo](https://takeaway-ui.vercel.app)
 
 ## 🧰 Stack
+
 - [Tailwind CSS](https://tailwindcss.com)
 - [Radix UI](https://www.radix-ui.com)
 - [Lucide Icons](https://lucide.dev/)
 - [Tailwind Variants](https://www.tailwind-variants.org)
 
 ## 🚗 Roadmap
+
 ### Commons
+
 - [ ] Table & Data table
 - [ ] Form with `react-hook-form`
 - [ ] Badge
@@ -26,15 +32,19 @@ A collection of React components that I use to build my side project, inspired b
 - [ ] Copy button
 
 ### Web3
+
 - [ ] NFT Card
 - [ ] Connect wallet modal
 - [ ] Wallet avatar
+
 and more...
 
 ## 💾 Installation
+
 **Prerequisites**: Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project. Follow the [Tailwind CSS installation instructions](https://tailwindcss.com/docs/installation) to get started.
 
 1/ Add dependencies
+
 ```
 npm install tailwindcss-animate tailwind-variants classnames tailwind-merge lucide-react
 ```
@@ -52,6 +62,7 @@ I use the `@` alias to make it easier to import components. This is how I config
   }
 }
 ```
+
 If you use a different alias such as `~`, you'll need to update `import` statements when adding components
 
 3/ Configure `tailwind.config.js`
@@ -70,11 +81,13 @@ export function cn(...inputs: cx.ArgumentArray) {
 ```
 
 ## Credit
+
 - [Shadcn UI](https://github.com/shadcn/ui)
 
 ## Contributing
+
 Contributions are always welcome!
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
+[MIT](https://choosealicense.com/licenses/mit/)

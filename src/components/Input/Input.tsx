@@ -7,7 +7,7 @@ import FormControlContext from "@/components/Form/FormControlContext"
 const styles = tv({
   slots: {
     input: [
-      "flex rounded-lg border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 shadow-xs",
+      "flex rounded-lg border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 shadow-z1",
       "placeholder:text-gray-500",
       "hover:border-gray-900",
       "focus:outline-none focus:ring-1 focus:border-gray-900 focus:ring-gray-900",

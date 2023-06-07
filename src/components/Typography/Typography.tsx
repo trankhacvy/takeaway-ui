@@ -1,9 +1,10 @@
-import { cva, VariantProps } from "class-variance-authority"
+import { tv, VariantProps } from "tailwind-variants"
 import React, { HTMLAttributes } from "react"
 import { cn } from "@/utils/cn"
 import { forwardRefWithAs } from "@/utils/render"
 
-const typographyVariants = cva("leading-snug", {
+const typographyVariants = tv({
+  base: "leading-snug",
   variants: {
     level: {
       h1: "text-7xl font-semibold",

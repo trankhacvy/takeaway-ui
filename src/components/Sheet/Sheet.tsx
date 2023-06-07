@@ -1,5 +1,5 @@
 import * as SheetPrimitive from "@radix-ui/react-dialog"
-import { cva, VariantProps } from "class-variance-authority"
+import { tv, VariantProps } from "tailwind-variants"
 import { XIcon } from "lucide-react"
 import * as React from "react"
 import { cn } from "@/utils/cn"
@@ -9,7 +9,8 @@ const Sheet = SheetPrimitive.Root
 
 const SheetTrigger = SheetPrimitive.Trigger
 
-const portalVariants = cva("fixed inset-0 z-50 flex", {
+const portalVariants = tv({
+  base: "fixed inset-0 z-50 flex",
   variants: {
     position: {
       top: "items-start",
@@ -46,7 +47,8 @@ const SheetOverlay = React.forwardRef<
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
-const sheetVariants = cva("fixed z-50 scale-100 gap-4 bg-white p-6 opacity-100 shadow-dialog border", {
+const sheetVariants = tv({
+  base: "fixed z-50 scale-100 gap-4 bg-white p-6 opacity-100 shadow-dialog border",
   variants: {
     position: {
       top: "animate-in slide-in-from-top w-full duration-300",

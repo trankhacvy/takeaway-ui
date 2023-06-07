@@ -1,51 +1,44 @@
-import { cva, VariantProps } from "class-variance-authority"
+import { tv, VariantProps } from "tailwind-variants"
 import React from "react"
 import { cn } from "@/utils/cn"
 import { forwardRefWithAs } from "@/utils/render"
 
-export const buttonVariants = cva(
-  [
-    "inline-flex items-center justify-center rounded-lg shadow-xs text-sm font-semibold transition-colors",
+export const buttonVariants = tv({
+  base: [
+    "inline-flex items-center justify-center rounded-lg shadow-z1 text-sm font-semibold transition-colors",
     "focus:outline-none focus:ring-4",
     "disabled:pointer-events-none",
     "active:scale-95",
   ],
-  {
-    variants: {
-      variant: {
-        solid: [
-          "bg-primary-400 text-white",
-          "hover:bg-primary-600",
-          "focus:ring-primary-100",
-          "disabled:bg-primary-200",
-        ],
-        outline: [
-          "text-primary-400 border border-primary-400",
-          "focus:ring-primary-100",
-          "disabled:text-primary-300 disabled:border-primary-200",
-        ],
-        link: [
-          "bg-transparent text-primary-600 focus:ring-0 shadow-none",
-          "hover:text-primary-800 hover:bg-transparent",
-          "disabled:text-gray-300",
-        ],
-      },
-      size: {
-        sm: "h-9 px-2 text-sm",
-        md: "h-10 px-2.5 text-sm",
-        lg: "h-11 px-2.5 text-base",
-      },
-      fullWidth: {
-        true: "w-full",
-      },
+  variants: {
+    variant: {
+      solid: ["bg-primary-400 text-white", "hover:bg-primary-600", "focus:ring-primary-100", "disabled:bg-primary-200"],
+      outline: [
+        "text-primary-400 border border-primary-400",
+        "focus:ring-primary-100",
+        "disabled:text-primary-300 disabled:border-primary-200",
+      ],
+      link: [
+        "bg-transparent text-primary-600 focus:ring-0 shadow-none",
+        "hover:text-primary-800 hover:bg-transparent",
+        "disabled:text-gray-300",
+      ],
     },
-    defaultVariants: {
-      variant: "solid",
-      size: "md",
-      fullWidth: false,
+    size: {
+      sm: "h-9 px-2 text-sm",
+      md: "h-10 px-2.5 text-sm",
+      lg: "h-11 px-2.5 text-base",
     },
-  }
-)
+    fullWidth: {
+      true: "w-full",
+    },
+  },
+  defaultVariants: {
+    variant: "solid",
+    size: "md",
+    fullWidth: false,
+  },
+})
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

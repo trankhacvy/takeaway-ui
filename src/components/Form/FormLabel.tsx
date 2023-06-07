@@ -15,7 +15,11 @@ export const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>((pro
   return (
     <label
       ref={ref}
-      className={cn("mb-1.5 flex select-none flex-wrap items-center text-sm font-medium text-gray-700", className)}
+      className={cn(
+        "mb-1.5 flex select-none flex-wrap items-center text-sm font-medium text-gray-700",
+        { "text-red-500": formControl?.error },
+        className
+      )}
       htmlFor={formControl?.htmlFor}
       id={formControl?.labelId}
       {...rest}

@@ -1,4 +1,4 @@
-import React, { useId } from "react"
+import React, { useId, useMemo } from "react"
 import { cn } from "@/utils/cn"
 import FormControlContext from "./FormControlContext"
 
@@ -10,17 +10,20 @@ export interface FormControlProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((props, ref) => {
-  const { id: idProp, required, disabled, error, className, ...rest } = props
+  const { id: idProp, required = false, disabled = false, error = false, className, ...rest } = props
   const internalId = useId()
   const id = idProp ?? internalId
 
-  const contextValue = {
-    disabled,
-    required,
-    error,
-    htmlFor: id,
-    labelId: `${id}-label`,
-  }
+  const contextValue = useMemo(
+    () => ({
+      disabled,
+      required,
+      error,
+      htmlFor: id,
+      labelId: `${id}-label`,
+    }),
+    [disabled, required, error, id]
+  )
 
   return (
     <FormControlContext.Provider value={contextValue}>

@@ -34,7 +34,12 @@ const styles = tv({
     },
     error: {
       true: {
-        input: "border-error-300 focus:border-error-300 focus:ring-error-100",
+        input: [
+          "border-error-500",
+          "hover:border-error-500",
+          "focus:border-error-500 focus:ring-error-500",
+          "placeholder:text-red-500",
+        ],
         startDecorator: "text-error-300",
         endDecorator: "text-error-300",
       },

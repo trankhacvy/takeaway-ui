@@ -6,6 +6,7 @@ export type FormControlContextValue =
   | (Pick<FormControlProps, "error" | "disabled" | "required"> & {
       labelId: string
       htmlFor: string | undefined
+      // "aria-describedby": string | undefined
     })
 
 const FormControlContext = React.createContext<FormControlContextValue>(undefined)

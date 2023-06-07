@@ -1,17 +1,16 @@
-"use client"
-
 import * as React from "react"
 import { tv } from "tailwind-variants"
 import { cn } from "@/utils/cn"
 import { forwardRefWithAs } from "@/utils/render"
-import FormControlContext from "../Form/FormControlContext"
+import FormControlContext from "@/components/Form/FormControlContext"
 
 const styles = tv({
   slots: {
     input: [
-      "flex rounded-lg border border-gray-300 hover:border-gray-500/32 bg-white py-2 px-3 text-base text-gray-900 shadow-xs",
+      "flex rounded-lg border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 shadow-xs",
       "placeholder:text-gray-500",
-      "focus:outline-none focus:border-primary-300 focus:ring-4 focus:ring-primary-100",
+      "hover:border-gray-900",
+      "focus:outline-none focus:ring-1 focus:border-gray-900 focus:ring-gray-900",
       "disabled:cursor-not-allowed disabled:bg-gray-50",
     ],
     startDecorator: "absolute inset-y-0 flex items-center left-3 pointer-events-none text-gray-500",
@@ -40,9 +39,9 @@ const styles = tv({
         endDecorator: "text-error-300",
       },
     },
-    isInput: {
+    disabled: {
       true: {
-        input: "h-11",
+        input: "hover:border-gray-300",
       },
     },
   },
@@ -50,6 +49,7 @@ const styles = tv({
     hasLeft: false,
     hasRight: false,
     fullWidth: true,
+    disabled: false,
     isInput: true,
   },
 })
@@ -88,10 +88,17 @@ export const Input = forwardRefWithAs<"input", InputProps>((props, ref) => {
     hasRight: !!endDecorator,
     fullWidth,
     error,
-    isInput: Tag === "input",
+    disabled,
   })
 
-  const child = <Tag className={cn(baseStyles.input(), className)} ref={ref} disabled={disabled} {...rest} />
+  const child = (
+    <Tag
+      className={cn(baseStyles.input(), { "h-11": Tag === "input" }, className)}
+      ref={ref}
+      disabled={disabled}
+      {...rest}
+    />
+  )
   if (startDecorator || endDecorator) {
     return (
       <div className={cn("relative", wrapperClassName)}>

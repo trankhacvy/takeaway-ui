@@ -1,5 +1,3 @@
-"use client"
-
 import React, { useId } from "react"
 import { cn } from "@/utils/cn"
 import FormControlContext from "./FormControlContext"

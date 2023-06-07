@@ -2,7 +2,7 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 import * as React from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/utils/cn"
-import { buttonVariants } from "../Button"
+import { buttonVariants } from "@/components/Button"
 
 const AlertDialog = AlertDialogPrimitive.Root
 

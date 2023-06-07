@@ -1,62 +1,41 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
-import { Typography, TypographyProps } from "./Typography"
+import type { Meta, StoryObj } from "@storybook/react"
+import { Typography } from "./"
 
-export default {
+const meta: Meta<typeof Typography> = {
   title: "components/Typography",
   component: Typography,
-} as ComponentMeta<typeof Typography>
-
-const Template: ComponentStory<typeof Typography> = (args) => <Typography {...args} />
-
-export const Default = Template.bind({})
-
-Default.args = {}
-
-Default.decorators = [
-  () => {
-    return (
-      <div className="flex flex-col gap-2">
-        <Typography {...(Default.args as TypographyProps)} level="h1">
-          h1
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="h2">
-          h2
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="h3">
-          h3
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="h4">
-          h4
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="h5">
-          h5
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="h6">
-          h6
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="body1">
-          body1
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="body2">
-          body2
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="body3">
-          body3
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="body4">
-          body4
-        </Typography>
-        <Typography {...(Default.args as TypographyProps)} level="body5">
-          body5
-        </Typography>
+  tags: ["autodocs"],
+  decorators: [
+    (Style) => (
+      <div className="flex flex-col gap-4">
+        <Style />
       </div>
-    )
+    ),
+  ],
+  args: {
+    children: "Typography",
   },
-]
-
-export const Custom = Template.bind({})
-Custom.args = {
-  children: "I'm a <span />",
-  as: "span",
+  argTypes: {},
 }
+
+type Story = StoryObj<typeof Typography>
+
+export const Default: Story = {
+  render: () => (
+    <>
+      <Typography level="h1">h1. Heading</Typography>
+      <Typography level="h2">h2. Heading</Typography>
+      <Typography level="h3">h3. Heading</Typography>
+      <Typography level="h4">h4. Heading</Typography>
+      <Typography level="h5">h5. Heading</Typography>
+      <Typography level="h6">h6. Heading</Typography>
+      <Typography level="body1">subtitle1</Typography>
+      <Typography level="body2">subtitle2</Typography>
+      <Typography level="body3">body1</Typography>
+      <Typography level="body4">body2</Typography>
+      <Typography level="body5">caption</Typography>
+    </>
+  ),
+}
+
+export default meta

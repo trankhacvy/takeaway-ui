@@ -1,6 +1,6 @@
 {
-  "name": "next-ui",
-  "version": "0.0.0",
+  "name": "takeaway-ui",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "cross-env FORCE_COLOR=1 next dev",
@@ -36,7 +36,6 @@
     "@radix-ui/react-slider": "^1.1.1",
     "@radix-ui/react-tabs": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.5",
-    "@t3-oss/env-nextjs": "^0.3.0",
     "@vercel/otel": "^0.3.0",
     "class-variance-authority": "^0.6.0",
     "classnames": "^2.3.2",

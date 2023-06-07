@@ -5,9 +5,6 @@ const meta = {
   title: "components/Slider",
   component: Slider,
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   decorators: [(story) => <div className="max-w-lg p-6">{story()}</div>],
 } satisfies Meta<typeof Slider>
 

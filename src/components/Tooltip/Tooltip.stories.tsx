@@ -1,60 +1,40 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { AlertCircleIcon } from "lucide-react"
-import React from "react"
+import type { Meta, StoryObj } from "@storybook/react"
+import { PlusIcon } from "lucide-react"
+import { IconButton } from "../IconButton"
 import { Typography } from "../Typography"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./"
 
-export default {
+const meta: Meta<typeof Tooltip> = {
   title: "components/Tooltip",
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>
+  tags: ["autodocs"],
+  args: {},
+  argTypes: {},
+}
 
-const Template: ComponentStory<typeof Tooltip> = (args) => <Tooltip {...args} />
+type Story = StoryObj<typeof Tooltip>
 
-export const Default = Template.bind({})
+export const Default: Story = {
+  render: (props) => (
+    <TooltipProvider delayDuration={200}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <IconButton color="primary">
+            <PlusIcon />
+          </IconButton>
+        </TooltipTrigger>
+        <TooltipContent className="max-w-md">
+          <Typography className="mb-1 text-sm" level="h2">
+            This is a tooltip
+          </Typography>
+          <Typography color="secondary" className="text-sm">
+            Tooltips are used to describe or identify an element. In most scenarios, tooltips help the user understand
+            meaning, function or alt-text.
+          </Typography>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  ),
+}
 
-Default.args = {}
-
-Default.decorators = [
-  () => {
-    return (
-      <TooltipProvider delayDuration={200}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <AlertCircleIcon className="h-5 w-5 text-gray-500" />
-          </TooltipTrigger>
-          <TooltipContent>
-            <Typography>This is a tooltip</Typography>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    )
-  },
-]
-
-export const Custom = Template.bind({})
-
-Custom.args = {}
-
-Custom.decorators = [
-  () => {
-    return (
-      <TooltipProvider delayDuration={200}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <AlertCircleIcon className="h-5 w-5 text-gray-500" />
-          </TooltipTrigger>
-          <TooltipContent className="max-w-md">
-            <Typography className="mb-1 text-sm" level="h2">
-              This is a tooltip
-            </Typography>
-            <Typography color="secondary" className="text-sm">
-              Tooltips are used to describe or identify an element. In most scenarios, tooltips help the user understand
-              meaning, function or alt-text.
-            </Typography>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    )
-  },
-]
+export default meta

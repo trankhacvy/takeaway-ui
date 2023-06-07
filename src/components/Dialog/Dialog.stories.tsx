@@ -1,50 +1,48 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
-import { Button } from "../Button"
-import { FormControl, FormLabel } from "../Form"
-import { Input } from "../Input"
+import type { Meta, StoryObj } from "@storybook/react"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./"
+import { Button } from "@/components/Button"
+import { FormControl, FormLabel } from "@/components/Form"
+import { Input } from "@/components/Input"
 
-export default {
+const meta: Meta<typeof Dialog> = {
   title: "components/Dialog",
   component: Dialog,
-} as ComponentMeta<typeof Dialog>
+  tags: ["autodocs"],
+  args: {},
+  argTypes: {},
+}
 
-const Template: ComponentStory<typeof Dialog> = (args) => <Dialog {...args} />
+type Story = StoryObj<typeof Dialog>
 
-export const Default = Template.bind({})
+export const Default: Story = {
+  render: (props) => (
+    <Dialog {...props}>
+      <DialogTrigger asChild>
+        <Button variant="outline">Edit Profile</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Log in to your account</DialogTitle>
+          <DialogDescription>Welcome back! Please enter your details.</DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4">
+          <FormControl>
+            <FormLabel>Email</FormLabel>
+            <Input placeholder="Enter your email" />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Password</FormLabel>
+            <Input type="password" placeholder="Enter your password" />
+          </FormControl>
+        </div>
+        <DialogFooter>
+          <Button fullWidth type="submit">
+            Sign in
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
+}
 
-Default.args = {}
-
-Default.decorators = [
-  () => {
-    return (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Log in to your account</DialogTitle>
-            <DialogDescription>Welcome back! Please enter your details.</DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4">
-            <FormControl>
-              <FormLabel>Email</FormLabel>
-              <Input placeholder="Enter your email" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Password</FormLabel>
-              <Input type="password" placeholder="Enter your password" />
-            </FormControl>
-          </div>
-          <DialogFooter>
-            <Button fullWidth type="submit">
-              Sign in
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    )
-  },
-]
+export default meta

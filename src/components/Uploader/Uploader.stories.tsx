@@ -1,24 +1,22 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
-import { Uploader } from "./Uploader"
+import type { Meta, StoryObj } from "@storybook/react"
+import { Uploader } from "./"
 
-export default {
+const meta: Meta<typeof Uploader> = {
   title: "components/Uploader",
   component: Uploader,
-} as ComponentMeta<typeof Uploader>
+  tags: ["autodocs"],
+  args: {},
+  argTypes: {},
+}
 
-const Template: ComponentStory<typeof Uploader> = (args) => <Uploader {...args} />
+type Story = StoryObj<typeof Uploader>
 
-export const Default = Template.bind({})
+export const Default: Story = {
+  render: (props) => <Uploader {...props} onExceedFileSize={() => alert("too much")} maxFiles={3} mutiple />,
+}
 
-Default.args = {}
+export const Single: Story = {
+  render: (props) => <Uploader {...props} onExceedFileSize={() => alert("too much")} mutiple={false} />,
+}
 
-Default.decorators = [
-  () => {
-    return (
-      <div className="flex flex-col gap-2">
-        <Uploader maxFiles={1} onChange={(files) => console.log(files)} />
-      </div>
-    )
-  },
-]
+export default meta

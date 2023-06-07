@@ -32,7 +32,7 @@ type Story = StoryObj<typeof AlertDialog & typeof AlertDialogContent>
 
 export const Default: Story = {
   render: ({ maxWidth, fullWidth, ...rest }) => (
-    <AlertDialog>
+    <AlertDialog {...rest}>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Open</Button>
       </AlertDialogTrigger>

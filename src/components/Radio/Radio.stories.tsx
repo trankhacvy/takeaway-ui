@@ -1,40 +1,37 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import type { Meta, StoryObj } from "@storybook/react"
 import { Radio, RadioGroup } from "./"
 
-export default {
+const meta: Meta<typeof Radio> = {
   title: "components/Radio",
-  component: RadioGroup,
-} as ComponentMeta<typeof RadioGroup>
+  component: Radio,
+  tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <RadioGroup defaultValue="option1" className="flex-col gap-4">
+        <Story />
+      </RadioGroup>
+    ),
+  ],
+  args: {},
+  argTypes: {},
+}
 
-const Template: ComponentStory<typeof RadioGroup> = (args) => <RadioGroup {...args} />
+type Story = StoryObj<typeof Radio>
 
-export const Default = Template.bind({})
+export const Default: Story = {
+  render: (props) => (
+    <>
+      <Radio {...props} value="option1">
+        Option 1
+      </Radio>
+      <Radio {...props} value="option2">
+        Option 2
+      </Radio>
+      <Radio {...props} value="option3" disabled>
+        Option 3
+      </Radio>
+    </>
+  ),
+}
 
-Default.args = {}
-
-Default.decorators = [
-  () => {
-    return (
-      <div className="space-y-4">
-        <RadioGroup defaultValue="default">
-          <div className="flex items-center space-x-2">
-            <Radio value="default" id="r1">
-              Default
-            </Radio>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Radio value="comfortable" id="r2">
-              Comfortable
-            </Radio>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Radio disabled value="compact" id="r3">
-              Compact
-            </Radio>
-          </div>
-        </RadioGroup>
-      </div>
-    )
-  },
-]
+export default meta

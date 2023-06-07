@@ -1,5 +1,3 @@
-"use client"
-
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { CheckIcon, ChevronDownIcon } from "lucide-react"
 import React from "react"
@@ -18,9 +16,9 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-11 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-[14px] py-2.5 text-gray-900 shadow-xs",
-      "hover:border-primary-300 hover:ring-4 hover:ring-primary-100",
-      "focus:outline-none focus:ring-4 focus:ring-primary-100",
+      "flex h-11 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-[14px] py-2.5 shadow-xs",
+      "hover:border-gray-900",
+      "focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900",
       "disabled:cursor-not-allowed disabled:opacity-50",
       "data-[placeholder]:text-gray-500",
       className
@@ -32,7 +30,7 @@ const SelectTrigger = React.forwardRef<
   </SelectPrimitive.Trigger>
 ))
 
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
@@ -52,7 +50,7 @@ const SelectContent = React.forwardRef<
   </SelectPrimitive.Portal>
 ))
 
-SelectContent.displayName = SelectPrimitive.Content.displayName;
+SelectContent.displayName = SelectPrimitive.Content.displayName
 
 const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
@@ -60,12 +58,12 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold text-primary-500", className)}
+    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold text-gray-900", className)}
     {...props}
   />
 ))
 
-SelectLabel.displayName = SelectPrimitive.Label.displayName;
+SelectLabel.displayName = SelectPrimitive.Label.displayName
 
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
@@ -74,8 +72,8 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none",
-      "data-[highlighted]:bg-gray-50",
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium text-gray-600 outline-none",
+      "data-[highlighted]:bg-gray-500/8",
       "focus:bg-gray-100",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
@@ -84,7 +82,7 @@ const SelectItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <CheckIcon className="h-5 w-5 text-primary-600" />
+        <CheckIcon className="h-5 w-5 text-primary-500" />
       </SelectPrimitive.ItemIndicator>
     </span>
 
@@ -92,15 +90,15 @@ const SelectItem = React.forwardRef<
   </SelectPrimitive.Item>
 ))
 
-SelectItem.displayName = SelectPrimitive.Item.displayName;
+SelectItem.displayName = SelectPrimitive.Item.displayName
 
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-  <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-gray-200", className)} {...props} />
+  <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-gray-500/8", className)} {...props} />
 ))
 
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 
 export { Select, SelectGroup, SelectValue, SelectTrigger, SelectContent, SelectLabel, SelectItem, SelectSeparator }

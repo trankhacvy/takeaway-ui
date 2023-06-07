@@ -3,6 +3,7 @@ import { cva, VariantProps } from "class-variance-authority"
 import { XIcon } from "lucide-react"
 import * as React from "react"
 import { cn } from "@/utils/cn"
+import { IconButton } from "../IconButton"
 
 const Sheet = SheetPrimitive.Root
 
@@ -35,7 +36,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-white/20 backdrop-blur-sm transition-all duration-100",
+      "fixed inset-0 z-50 bg-white/20 transition-all duration-100",
       "data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in",
       className
     )}
@@ -140,9 +141,11 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
       <SheetOverlay />
       <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ position, size }), className)} {...props}>
         {children}
-        <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
-          <XIcon className="h-4 w-4" />
-          <span className="sr-only">Close</span>
+        <SheetPrimitive.Close asChild>
+          <IconButton size="sm" className="absolute right-4 top-6">
+            <XIcon />
+            <span className="sr-only">Close</span>
+          </IconButton>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </SheetPortal>
@@ -151,7 +154,7 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
 const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("flex flex-col space-y-2 text-center sm:text-left", className)} {...props} />
+  <div className={cn("flex flex-col space-y-2", className)} {...props} />
 )
 SheetHeader.displayName = "SheetHeader"
 

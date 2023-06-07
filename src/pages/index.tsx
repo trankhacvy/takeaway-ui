@@ -1,9 +1,14 @@
-import { useRouter } from "next/router"
+import Head from "next/head"
 
 const Index = () => {
-  const router = useRouter()
-
-  return <div>hello</div>
+  return (
+    <>
+      <Head>
+        <title>Takeaway UI</title>
+      </Head>
+      <div>hello</div>
+    </>
+  )
 }
 
 export default Index

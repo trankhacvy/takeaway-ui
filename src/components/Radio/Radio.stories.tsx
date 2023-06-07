@@ -34,4 +34,29 @@ export const Default: Story = {
   ),
 }
 
+export const Colors: Story = {
+  render: (props) => (
+    <>
+      <Radio {...props} value="default" color="default">
+        Default
+      </Radio>
+      <Radio {...props} value="primary" color="primary">
+        Primary
+      </Radio>
+      <Radio {...props} value="success" color="success">
+        Success
+      </Radio>
+      <Radio {...props} value="info" color="info">
+        Info
+      </Radio>
+      <Radio {...props} value="warning" color="warning">
+        Warning
+      </Radio>
+      <Radio {...props} value="error" color="error">
+        Error
+      </Radio>
+    </>
+  ),
+}
+
 export default meta

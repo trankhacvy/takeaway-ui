@@ -31,18 +31,34 @@ export const Default: Story = {
   render: (props) => <Button {...props} />,
 }
 
+const variantOptions: ButtonProps["variant"][] = ["solid", "outline", "link"]
+
 export const Variants: Story = {
   render: ({ children, ...rest }) => (
     <div className="flex gap-4">
-      <Button {...rest} variant="solid">
-        {children}
-      </Button>
-      <Button {...rest} variant="outline">
-        {children}
-      </Button>
-      <Button {...rest} variant="link">
-        {children}
-      </Button>
+      {variantOptions.map((variant) => (
+        <Button {...rest} key={variant} variant={variant}>
+          {children}
+        </Button>
+      ))}
+    </div>
+  ),
+}
+
+const colorOptions: ButtonProps["color"][] = ["default", "primary", "success", "info", "warning", "error"]
+
+export const Colors: Story = {
+  render: ({ children, ...rest }) => (
+    <div className="flex flex-col gap-4">
+      {variantOptions.map((variant) => (
+        <div key={variant} className="flex gap-4">
+          {colorOptions.map((color) => (
+            <Button {...rest} variant={variant} color={color} key={`${variant}-${color}`}>
+              {children}
+            </Button>
+          ))}
+        </div>
+      ))}
     </div>
   ),
 }

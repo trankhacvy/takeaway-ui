@@ -5,24 +5,24 @@ import { forwardRefWithAs } from "@/utils/render"
 
 export const buttonVariants = tv({
   base: [
-    "inline-flex items-center justify-center rounded-lg shadow-z1 text-sm font-semibold transition-colors",
+    "inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-colors",
     "focus:outline-none focus:ring-4",
     "disabled:pointer-events-none",
     "active:scale-95",
   ],
   variants: {
     variant: {
-      solid: ["bg-primary-400 text-white", "hover:bg-primary-600", "focus:ring-primary-100", "disabled:bg-primary-200"],
-      outline: [
-        "text-primary-400 border border-primary-400",
-        "focus:ring-primary-100",
-        "disabled:text-primary-300 disabled:border-primary-200",
-      ],
-      link: [
-        "bg-transparent text-primary-600 focus:ring-0 shadow-none",
-        "hover:text-primary-800 hover:bg-transparent",
-        "disabled:text-gray-300",
-      ],
+      solid: ["shadow-z1"],
+      outline: ["border"],
+      link: [],
+    },
+    color: {
+      default: "",
+      primary: "",
+      info: "",
+      success: "",
+      warning: "",
+      error: "",
     },
     size: {
       sm: "h-9 px-2 text-sm",
@@ -32,16 +32,154 @@ export const buttonVariants = tv({
     fullWidth: {
       true: "w-full",
     },
+    disabled: {
+      true: "cursor-not-allowed",
+    },
   },
+  compoundVariants: [
+    // solid
+    {
+      variant: "solid",
+      color: "default",
+      class: ["bg-gray-800 text-white", "hover:bg-gray-700", "focus:ring-gray-800/16"],
+    },
+    {
+      variant: "solid",
+      color: "primary",
+      class: ["bg-primary-500 text-white", "hover:bg-primary-700", "focus:ring-primary-500/16"],
+    },
+    {
+      variant: "solid",
+      color: "success",
+      class: ["bg-success-500 text-white", "hover:bg-success-700", "focus:ring-success-500/16"],
+    },
+    {
+      variant: "solid",
+      color: "info",
+      class: ["bg-info-500 text-white", "hover:bg-info-700", "focus:ring-info-500/16"],
+    },
+    {
+      variant: "solid",
+      color: "warning",
+      class: ["bg-warning-500 text-white", "hover:bg-warning-700", "focus:ring-warning-500/16"],
+    },
+    {
+      variant: "solid",
+      color: "error",
+      class: ["bg-error-500 text-white", "hover:bg-error-700", "focus:ring-error-500/16"],
+    },
+    {
+      variant: "solid",
+      disabled: true,
+      class: ["bg-gray-500/24 text-gray-500/80"],
+    },
+    // outline
+    {
+      variant: "outline",
+      color: "default",
+      class: [
+        "borde-gray-500/24 text-gray-800",
+        "hover:border-current hover:ring-1 hover:ring-current hover:bg-gray-800/8",
+        "focus:ring-gray-800/16 focus:ring-1",
+      ],
+    },
+    {
+      variant: "outline",
+      color: "primary",
+      class: [
+        "border-primary-500/50 text-primary-500",
+        "hover:border-current hover:ring-1 hover:ring-current hover:bg-primary-500/8",
+        "focus:ring-primary-500/16 focus:ring-1",
+      ],
+    },
+    {
+      variant: "outline",
+      color: "success",
+      class: [
+        "border-success-500/50 text-success-500",
+        "hover:border-current hover:ring-1 hover:ring-current hover:bg-success-500/8",
+        "focus:ring-success-500/16 focus:ring-1",
+      ],
+    },
+    {
+      variant: "outline",
+      color: "info",
+      class: [
+        "border-info-500/50 text-info-500",
+        "hover:border-current hover:ring-1 hover:ring-current hover:bg-info-500/8",
+        "focus:ring-info-500/16 focus:ring-1",
+      ],
+    },
+    {
+      variant: "outline",
+      color: "warning",
+      class: [
+        "border-warning-500/50 text-warning-500",
+        "hover:border-current hover:ring-1 hover:ring-current hover:bg-warning-500/8",
+        "focus:ring-warning-500/16 focus:ring-1",
+      ],
+    },
+    {
+      variant: "outline",
+      color: "error",
+      class: [
+        "border-error-500/50 text-error-500",
+        "hover:border-current hover:ring-1 hover:ring-current hover:bg-error-500/8",
+        "focus:ring-error-500/16 focus:ring-1",
+      ],
+    },
+    {
+      variant: "outline",
+      disabled: true,
+      class: ["border-gray-500/24 text-gray-500/80"],
+    },
+    // link
+    {
+      variant: "link",
+      color: "default",
+      class: ["hover:bg-gray-500/8", "focus:ring-gray-500/8"],
+    },
+    {
+      variant: "link",
+      color: "primary",
+      class: ["text-primary-500", "hover:bg-primary-500/8", "focus:ring-primary-500/8"],
+    },
+    {
+      variant: "link",
+      color: "success",
+      class: ["text-success-500", "hover:bg-success-500/8", "focus:ring-success-500/8"],
+    },
+    {
+      variant: "link",
+      color: "info",
+      class: ["text-info-500", "hover:bg-info-500/8", "focus:ring-info-500/8"],
+    },
+    {
+      variant: "link",
+      color: "warning",
+      class: ["text-warning-500", "hover:bg-warning-500/8", "focus:ring-warning-500/8"],
+    },
+    {
+      variant: "link",
+      color: "error",
+      class: ["text-error-500", "hover:bg-error-500/8", "focus:ring-error-500/8"],
+    },
+    {
+      variant: "link",
+      disabled: true,
+      class: ["text-gray-500/80"],
+    },
+  ],
   defaultVariants: {
     variant: "solid",
+    color: "default",
     size: "md",
-    fullWidth: false,
+    disabled: false,
   },
 })
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color">,
     VariantProps<typeof buttonVariants> {
   startDecorator?: React.ReactNode
   endDecorator?: React.ReactNode
@@ -54,6 +192,7 @@ export const Button = forwardRefWithAs<"button", ButtonProps>(
       as: Tag = "button",
       className,
       variant,
+      color = "default",
       loading,
       fullWidth,
       size,
@@ -86,7 +225,7 @@ export const Button = forwardRefWithAs<"button", ButtonProps>(
 
     return (
       <Tag
-        className={cn(buttonVariants({ variant, size, fullWidth, className }))}
+        className={cn(buttonVariants({ variant, color, size, fullWidth, disabled, className }))}
         ref={ref}
         disabled={disabled}
         {...props}

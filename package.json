@@ -45,7 +45,7 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "tailwind-merge": "^1.12.0",
-    "tailwind-variants": "^0.1.5",
+    "tailwind-variants": "^0.1.10",
     "zod": "^3.21.4"
   },
   "devDependencies": {

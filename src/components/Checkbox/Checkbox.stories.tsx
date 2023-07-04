@@ -9,6 +9,7 @@ const meta: Meta<CheckboxProps> = {
     children: "Remember me?",
     color: "default",
     defaultChecked: true,
+    disabled: false,
   },
   argTypes: {
     color: {

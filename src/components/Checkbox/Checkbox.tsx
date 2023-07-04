@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn"
 
 const checkboxStyles = tv({
   base: [
-    "relative h-5 w-5 rounded-[4px] border",
+    "peer relative h-5 w-5 rounded-[4px] border",
     "focus:outline-none focus:ring-4 focus:ring-offset-2",
     "disabled:cursor-not-allowed disabled:opacity-50",
   ],
@@ -14,7 +14,7 @@ const checkboxStyles = tv({
     color: {
       default: [
         "border-gray-600 hover:bg-gray-600/8 focus:ring-gray-600/24",
-        "data-[state=checked]:border-gray-600 data-[state=checked]:bg-gray-600",
+        "data-[state=checked]:border-gray-800 data-[state=checked]:bg-gray-800",
       ],
       primary: [
         "border-primary-600 hover:bg-primary-600/8 focus:ring-primary-600/24",
@@ -55,22 +55,14 @@ export const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimiti
         <CheckboxPrimitive.Root
           ref={ref}
           id={idProp ?? id}
-          className={cn(
-            checkboxStyles({ color }),
-            // "relative h-5 w-5 rounded-[4px] border border-gray-600",
-            // "hover:bg-gray-600/8",
-            // "focus:outline-none focus:ring-4 focus:ring-gray-600/24 focus:ring-offset-2",
-            // "disabled:cursor-not-allowed disabled:opacity-50",
-            // "data-[state=checked]:border-gray-600 data-[state=checked]:bg-gray-600",
-            className
-          )}
+          className={cn(checkboxStyles({ color }), className)}
           {...props}
         >
           <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center")}>
             <CheckIcon className="h-4 w-4 text-white" />
           </CheckboxPrimitive.Indicator>
         </CheckboxPrimitive.Root>
-        <label className="text-sm font-medium text-gray-800" htmlFor={idProp ?? id}>
+        <label className="text-sm font-medium text-gray-800 peer-disabled:opacity-50" htmlFor={idProp ?? id}>
           {children}
         </label>
       </span>

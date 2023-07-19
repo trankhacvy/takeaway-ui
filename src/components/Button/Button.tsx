@@ -27,7 +27,7 @@ export const buttonVariants = tv({
     size: {
       sm: "h-9 px-2 text-sm",
       md: "h-10 px-2.5 text-sm",
-      lg: "h-11 px-2.5 text-base",
+      lg: "h-14 px-3 text-base",
     },
     fullWidth: {
       true: "w-full",
